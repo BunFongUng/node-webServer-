@@ -4,6 +4,8 @@ const hbs = require('hbs');
 
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;
+
 let app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -33,11 +35,11 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
-    res.render('maintenance', {
-        title: 'Website is in maintenance mode!'
-    });
-});
+// app.use((req, res, next) => {
+//     res.render('maintenance', {
+//         title: 'Website is in maintenance mode!'
+//     });
+// });
 
 app.get('/', (req, res) => {
     res.send({
@@ -66,4 +68,4 @@ app.get('/not-found', (req, res) => {
     })
 });
 
-app.listen(3000);
+app.listen(port);
